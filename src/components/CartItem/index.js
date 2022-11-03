@@ -20,10 +20,10 @@ const CartItem = props => (
       }
       // TODO: Update the functionality to increment and decrement quantity of the cart item
       const onIncrement = () => {
-        incrementCartItemQuantity()
+        incrementCartItemQuantity(id)
       }
       const onDecrement = () => {
-        decrementCartItemQuantity()
+        decrementCartItemQuantity(id)
       }
       return (
         <li className="cart-item">

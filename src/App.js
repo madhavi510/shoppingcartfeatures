@@ -15,7 +15,6 @@ import './App.css'
 class App extends Component {
   state = {
     cartList: [],
-    quantity: 1,
   }
 
   //   TODO: Add your code for remove all cart items, increment cart item quantity, decrement cart item quantity, remove cart item
@@ -37,12 +36,34 @@ class App extends Component {
     this.setState({cartList: []})
   }
 
-  decrementCartItemQuantity = () => {
-    this.setState(prevState => ({quantity: prevState.quantity - 1}))
+  decrementCartItemQuantity = id => {
+    const {cartList} = this.state
+    const cartItem = cartList.find(eachCart => eachCart.id === id)
+    if (cartItem.quantity > 1) {
+      this.setState(prevState => ({
+        cartList: prevState.cartList.map(eachCart => {
+          if (id === eachCart.id) {
+            const getQuantity = eachCart.quantity - 1
+            return {...eachCart, quantity: getQuantity}
+          }
+          return eachCart
+        }),
+      }))
+    } else {
+      this.removeCartItem(id)
+    }
   }
 
-  incrementCartItemQuantity = () => {
-    this.setState(prevState => ({quantity: prevState.quantity + 1}))
+  incrementCartItemQuantity = id => {
+    this.setState(prevState => ({
+      cartList: prevState.cartList.map(eachCart => {
+        if (id === eachCart.id) {
+          const getQuantity = eachCart.quantity + 1
+          return {...eachCart, quantity: getQuantity}
+        }
+        return eachCart
+      }),
+    }))
   }
 
   render() {

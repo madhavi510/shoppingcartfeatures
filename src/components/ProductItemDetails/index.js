@@ -172,6 +172,7 @@ class ProductItemDetails extends Component {
                     type="button"
                     className="quantity-controller-button"
                     onClick={this.onIncrementQuantity}
+                    testid="plus"
                   >
                     <BsPlusSquare className="quantity-controller-icon" />
                   </button>
@@ -180,7 +181,6 @@ class ProductItemDetails extends Component {
                   type="button"
                   className="button add-to-cart-btn"
                   onClick={onClickAddToCart}
-                  testid="plus"
                 >
                   ADD TO CART
                 </button>
